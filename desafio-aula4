@@ -1,0 +1,43 @@
+root@ubuntu:~$ docker run -d --name desafio-aula4 -p 8081:80 nginx:alpine
+ac08db75f43999b2231ce0a40a8747f1fe03a450c3c0c71cd588c4819a308e50
+root@ubuntu:~$ docker ps
+CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS          PORTS                                     NAMES
+ac08db75f439   nginx:alpine   "/docker-entrypoint.…"   20 seconds ago   Up 19 seconds   0.0.0.0:8081->80/tcp, [::]:8081->80/tcp   desafio-aula4
+b2a6b0743a33   nginx:alpine   "/docker-entrypoint.…"   15 minutes ago   Up 15 minutes   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   web-aula
+root@ubuntu:~$ curl localhost:8081
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+html { color-scheme: light dark; }
+body { width: 35em; margin: 0 auto;
+font-family: Tahoma, Verdana, Arial, sans-serif; }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, nginx is successfully installed and working.
+Further configuration is required for the web server, reverse proxy, 
+API gateway, load balancer, content cache, or other features.</p>
+
+<p>For online documentation and support please refer to
+<a href="https://nginx.org/">nginx.org</a>.<br/>
+To engage with the community please visit
+<a href="https://community.nginx.org/">community.nginx.org</a>.<br/>
+For enterprise grade support, professional services, additional 
+security features and capabilities please refer to
+<a href="https://f5.com/nginx">f5.com/nginx</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+root@ubuntu:~$ docker stop desafio-aula4
+desafio-aula4
+root@ubuntu:~$ docker rm desafio-aula4
+desafio-aula4
+root@ubuntu:~$ docker ps -a
+CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS                      PORTS                                     NAMES
+b2a6b0743a33   nginx:alpine   "/docker-entrypoint.…"   16 minutes ago   Up 16 minutes               0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   web-aula
+81d8adfad2d3   hello-world    "/hello"                 19 minutes ago   Exited (0) 19 minutes ago                                             xenodochial_kepler
+root@ubuntu:~$ 
